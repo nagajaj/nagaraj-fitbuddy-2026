@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy — AI Workout Generator{% endblock %}
+{% block content %}
+<section class="hero"><div><span class="eyebrow">AI FITNESS PLANNER</span><h1>Your personalized 7-day fitness plan.</h1><p>Tell FitBuddy your goal and preferred intensity. Gemini creates a structured routine plus a practical nutrition or recovery tip.</p></div><div class="hero-card"><div class="orb">FB</div><p>Plan · Train · Recover · Adapt</p></div></section>
+<section class="panel"><h2>Create your plan</h2><form action="/generate-workout" method="post" class="grid-form">
+<label>Name<input name="username" required maxlength="120" placeholder="Alex"></label>
+<label>User ID<input name="user_id" type="number" min="1" required placeholder="10"></label>
+<label>Age<input name="age" type="number" min="13" max="100" required placeholder="25"></label>
+<label>Weight (kg)<input name="weight" type="number" min="20" max="500" step="0.1" required placeholder="70"></label>
+<label class="wide">Fitness goal<textarea name="goal" required maxlength="500" rows="3" placeholder="e.g. lose body fat and build strength"></textarea></label>
+<label>Workout intensity<select name="intensity" required><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
+<div class="wide actions"><button type="submit">Generate Plan</button></div>
+</form></section>
+<section class="feature-grid"><article><h3>7-day routine</h3><p>Warm-up, main workout, cooldown and recovery guidance for each day.</p></article><article><h3>Adaptive feedback</h3><p>Ask for more cardio, extra rest, yoga, or other adjustments.</p></article><article><h3>Nutrition tip</h3><p>A concise goal-aligned nutrition or recovery suggestion.</p></article></section>
+{% endblock %}

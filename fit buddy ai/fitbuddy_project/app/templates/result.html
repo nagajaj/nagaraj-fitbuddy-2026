@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy — Your Plan{% endblock %}
+{% block content %}
+<section class="panel"><div class="split"><div><span class="eyebrow">{% if updated %}UPDATED PLAN{% else %}PERSONALIZED PLAN{% endif %}</span><h1>{{ user.name }}'s fitness plan</h1></div><span class="badge">{{ user.intensity|title }} intensity</span></div>
+<div class="profile"><span><b>ID</b>{{ user.user_id if user.user_id is defined else user.id }}</span><span><b>Age</b>{{ user.age }}</span><span><b>Weight</b>{{ user.weight }} kg</span><span><b>Goal</b>{{ user.goal }}</span></div></section>
+<section class="panel"><h2>Workout Plan</h2><pre class="plan">{{ workout_plan }}</pre></section>
+<section class="panel tip"><h2>Nutrition / Recovery Tip</h2><p>{{ nutrition_tip }}</p></section>
+<section class="panel"><h2>Refine this plan</h2><form action="/submit-feedback" method="post"><input type="hidden" name="user_id" value="{{ user.user_id if user.user_id is defined else user.id }}"><textarea name="feedback" rows="4" required maxlength="2000" placeholder="e.g. Add more cardio and make Day 4 a full rest day."></textarea><button type="submit">Update Plan</button></form></section>
+{% endblock %}
